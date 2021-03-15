@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: whitesmoke !important;min-height:100vh">
+        <form onsubmit="hitung(event)" action="#">
+            <select required id="gender" required>
+                <option value="">Pilih Gender</option>
+                <option value="1">Laki</option>
+                <option value="2">Perempuan</option>
+            </select>
+            <input value="" type="number"id="tinggi" placeholder="Masukan Tinggi" required/>
+            <input value="" id="beratbadan" placeholder="Berat Badan ideal kamu" readonly disabled/>
+            <div id="output" style="padding-bottom:5px;background-color: whitesmoke;color:green">
+            </div>
+            <button type="submit" style="background-color: blue;color:white;padding:5px;display:block;margin-top: 10px;">Hitung</button>
+        </form>
+            
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+
+        function hitung(e)
+        {
+            e.preventDefault();
+            const rumus = [0.15,0.10];
+            const gender = $("#gender").val();
+            const tinggi = $("#tinggi").val();
+            const ideal = parseFloat(((parseInt(tinggi) - 100) - (parseInt(tinggi) - 100) * (gender == 1 ? 0.10 : 0.15)))
+            $("#beratbadan").val(ideal);
+        }
+    </script>
+</body>
+</html>
